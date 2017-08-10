@@ -25,3 +25,7 @@ Run
 Open browser
 
     http://localhost:8080
+
+View on Heroku
+
+    https://thawing-island-45091.herokuapp.com/
