@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Flickr Gallery Browser</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <style>
+
+      body {
+        margin-top: 20px;
+      }
+
+      #gallery {
+        height: 600px;
+        border: 1px rgb(172, 172, 172) solid;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Flickr Gallery Explorer</h1>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-md-6">
+          <iframe src="/gallery" frameborder="0" id="gallery"></iframe>
+        </div>
+        <div class="col-md-6">
+          <div class="preview">
+            <div class="instructions">
+              <p>Click picture to see details...</p>
+            </div>
+
+            <div class="meta" style="display: none;">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th>Owner's name</th>
+                    <td class="photo__owner"></td>
+                  </tr>
+                  <tr>
+                    <th>Date taken</th>
+                    <td class="photo__date"></td>
+                  </tr>
+                  <tr>
+                    <th>Number of times viewed</th>
+                    <td class="photo__views"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script>
+
+      var currentId = null;
+      var selectedId = null;
+
+      function receiveMessage(event) {
+        var pictureMeta = event.data.photo;
+
+        selectedId = pictureMeta.id;
+
+        if (currentId !== selectedId) {
+          $('.instructions').hide();
+          $('.meta').show();
+          currentId = selectedId;
+        }
+        else {
+          $('.instructions').toggle();
+          $('.meta').toggle();
+        }
+
+        $('.photo__owner').text(pictureMeta.ownername);
+        $('.photo__date').text(pictureMeta.datetaken);
+        $('.photo__views').text(pictureMeta.views);
+      }
+
+      $(function() {
+        window.addEventListener("message", receiveMessage, false);
+      })
+    </script>
+
+  </body>
+</html>
