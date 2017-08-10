@@ -4,7 +4,6 @@
 
 * `node.js` (at least version 6.x)
 * `npm` package manager
-* postgres database
 * `yarn` package manager
 
 ## Steps to run locally
@@ -16,8 +15,6 @@ Clone repository
 Install dependencies
 
     yarn install
-
-[todo] database steps
 
 Run
 
