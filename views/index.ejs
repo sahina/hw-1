@@ -79,21 +79,24 @@
       function receiveMessage(event) {
         var pictureMeta = event.data.photo;
 
-        selectedId = pictureMeta.id;
+        if (pictureMeta) {
+          selectedId = pictureMeta.id;
 
-        if (currentId !== selectedId) {
-          $('.instructions').hide();
-          $('.meta').show();
-          currentId = selectedId;
-        }
-        else {
-          $('.instructions').toggle();
-          $('.meta').toggle();
+          if (currentId !== selectedId) {
+            $('.instructions').hide();
+            $('.meta').show();
+            currentId = selectedId;
+          }
+          else {
+            $('.instructions').toggle();
+            $('.meta').toggle();
+          }
+
+          $('.photo__owner').text(pictureMeta.ownername);
+          $('.photo__date').text(pictureMeta.datetaken);
+          $('.photo__views').text(pictureMeta.views);
         }
 
-        $('.photo__owner').text(pictureMeta.ownername);
-        $('.photo__date').text(pictureMeta.datetaken);
-        $('.photo__views').text(pictureMeta.views);
       }
 
       $(function() {

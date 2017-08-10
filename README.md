@@ -30,3 +30,10 @@ Open browser
 View on Heroku
 
     https://thawing-island-45091.herokuapp.com/
+
+
+## Further Improvements
+
+* Improve styling
+* Production build (JS uglify, minify)
+* Test coverage included into build process
