@@ -4,7 +4,6 @@ Browse pictures in flicker gallery. Enter gallery id to search and click on pict
 
 ## Requirements
 * `node.js` (at least version 6.x)
-* `npm` package manager
 * `yarn` package manager
 
 ## Steps to run locally
