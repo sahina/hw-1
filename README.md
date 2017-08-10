@@ -1,7 +1,8 @@
 # AMEX Assignment
 
-## Requirements
+Browse pictures in flicker gallery. Enter gallery id to search and click on picture to see image meta-data.
 
+## Requirements
 * `node.js` (at least version 6.x)
 * `npm` package manager
 * `yarn` package manager
